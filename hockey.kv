@@ -1,0 +1,45 @@
+#:kivy 1.0.9
+
+<Puck>:
+    size: 50, 50 
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size          
+
+<HockeyStick>:
+    size: 15, 100
+    canvas:
+        Rectangle:
+            pos:self.pos
+            size:self.size
+
+<HockeyGame>:
+    puck: hockey_puck
+    player: player
+    
+    canvas:
+        Rectangle:
+            pos: self.center_x-5, 0
+            size: 10, self.height
+    
+    Label:
+        font_size: 70  
+        center_x: root.width / 4
+        top: root.top - 50
+        text: str(root.timer)
+        
+    Label:
+        font_size: 70  
+        center_x: root.width * 3 / 4
+        top: root.top - 50
+        text: str(root.player.score)
+    
+    Puck:
+        id: hockey_puck
+        center: self.parent.center
+        
+    HockeyStick:
+        id: player
+        x: root.x
+        center_y: root.center_y
